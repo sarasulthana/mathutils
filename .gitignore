@@ -1,0 +1,16 @@
+# Ignore build directories
+/build/
+/bin/
+/obj/
+
+# Ignore IDE specific files
+/.vs/
+/.vscode/
+/.idea/
+/.DS_Store
+
+# Ignore compiled object files
+*.o
+*.a
+*.so
+*.exe
