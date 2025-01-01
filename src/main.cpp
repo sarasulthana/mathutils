@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cassert>  // Include for assert
 #include "mathutils.h"
 
 int main() {
