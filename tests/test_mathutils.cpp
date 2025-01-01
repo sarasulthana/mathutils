@@ -19,9 +19,10 @@ int main() {
 
         // Additional test for negative factorial
         fact = -1;
-        int negative_fact = mathutils::factorial(fact);
-        std::cout << "Test factorial negative: Factorial of " << fact << " is " << negative_fact << std::endl;
-        assert(negative_fact == -1);  // Assuming -1 is returned for invalid input
+        expected_fact = -1;
+        calculated_fact = mathutils::factorial(fact);
+        std::cout << "Test factorial negative: Factorial of " << fact << " is " << calculated_fact  << std::endl;
+        assert(expected_fact == calculated_fact);  // Assuming -1 is returned for invalid input
 
         std::cout << "All tests passed!" << std::endl;
     } catch (const std::exception &e) {
