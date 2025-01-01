@@ -29,6 +29,3 @@ jobs:
     - name: Run tests using ctest
       run: cd build && ctest --output-on-failure
 
-    # Optionally, run distcheck or other checks (if defined in Makefile)
-    - name: Run distcheck (if applicable)
-      run: cd build && make distcheck
