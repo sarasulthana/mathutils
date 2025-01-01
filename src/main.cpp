@@ -14,5 +14,11 @@ int main() {
     int fact = 5;
     std::cout << "Factorial of " << fact << " is " << mathutils::factorial(fact) << "\n";
 
+    // Test factorial for negative number (expect -1)
+    int negative_fact = mathutils::factorial(-1);
+    std::cout << "Factorial of -1 is " << negative_fact << "\n";  // Expected output: -1
+    assert(negative_fact == -1);  // Check if factorial of negative number is -1
+
     return 0;
+
 }
