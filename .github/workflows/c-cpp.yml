@@ -17,21 +17,18 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get install -y cmake build-essential
 
-    # Create a build directory and run CMake
-    - name: Create build directory
-      run: mkdir build && cd build
-
-    - name: Run CMake
-      run: cmake ..
+    # Create a build directory inside the mathutils folder and run CMake from it
+    - name: Create build directory and run CMake
+      run: mkdir -p build && cd build && cmake ../mathutils
 
     # Build the project with make
     - name: Build project
-      run: make
+      run: cd build && make
 
-    # Run tests if available (for example, if using make check)
+    # Run tests if available (make check)
     - name: Run tests
-      run: make check
+      run: cd build && make check
 
-    # Optionally, run distcheck or other clean build checks if needed
+    # Optionally, run distcheck or other checks (if defined in Makefile)
     - name: Run distcheck (if applicable)
-      run: make distcheck
+      run: cd build && make distcheck
