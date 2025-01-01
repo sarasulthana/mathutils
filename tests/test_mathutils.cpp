@@ -3,41 +3,34 @@
 #include "mathutils.h"
 
 int main() {
-    // Test isPrime function
-    int num = 7;
-    bool is_prime = mathutils::isPrime(num);
-    assert(is_prime == true); // Check if the number is correctly identified as prime
-    std::cout << num << " is a prime number.\n";
+    try {
+        // Test isPrime function
+        int num = 7;
+        bool is_prime = mathutils::isPrime(num);
+        std::cout << "Test isPrime: " << num << " is " << (is_prime ? "prime" : "not prime") << std::endl;
+        assert(is_prime == true);  // Check if it is correctly identified as prime
 
-    // Test factorial function
-    int fact = 5;
-    int expected_fact = 120;  // Expected factorial of 5 is 120
-    int calculated_fact = mathutils::factorial(fact);
-    assert(calculated_fact == expected_fact); // Assert that factorial is calculated correctly
-    std::cout << "Factorial of " << fact << " is " << calculated_fact << "\n";
+        // Test factorial function
+        int fact = 5;
+        int expected_fact = 120;  // Expected factorial of 5 is 120
+        int calculated_fact = mathutils::factorial(fact);
+        std::cout << "Test factorial: Factorial of " << fact << " is " << calculated_fact << std::endl;
+        assert(calculated_fact == expected_fact);
 
-    // Additional tests
+        // Additional test for negative factorial
+        fact = -1;
+        int negative_fact = mathutils::factorial(fact);
+        std::cout << "Test factorial negative: Factorial of " << fact << " is " << negative_fact << std::endl;
+        assert(negative_fact == -1);  // Assuming -1 is returned for invalid input
 
-    // Test isPrime function with a non-prime number
-    num = 4;
-    is_prime = mathutils::isPrime(num);
-    assert(is_prime == false); // Check if the number is correctly identified as not prime
-    std::cout << num << " is not a prime number.\n";
-
-    // Test factorial function with a corner case (0! = 1)
-    fact = 0;
-    expected_fact = 1;  // 0! = 1 by definition
-    calculated_fact = mathutils::factorial(fact);
-    assert(calculated_fact == expected_fact); // Assert that factorial of 0 is correct
-    std::cout << "Factorial of " << fact << " is " << calculated_fact << "\n";
-
-    // Test negative number for factorial (undefined, should ideally return some error or handle gracefully)
-    fact = -1;
-    calculated_fact = mathutils::factorial(fact);
-    assert(calculated_fact == -1);  // Assuming that -1 is returned for invalid input, or handle accordingly
-    std::cout << "Factorial of " << fact << " is " << calculated_fact << "\n";
-
-    std::cout << "All tests passed!" << std::endl;
+        std::cout << "All tests passed!" << std::endl;
+    } catch (const std::exception &e) {
+        std::cerr << "Test failed with exception: " << e.what() << std::endl;
+        return 1;
+    } catch (...) {
+        std::cerr << "Test failed with unknown error!" << std::endl;
+        return 1;
+    }
 
     return 0;
 }

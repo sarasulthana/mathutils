@@ -19,15 +19,15 @@ jobs:
 
     # Create a build directory and run CMake from it
     - name: Create build directory and run CMake
-      run: mkdir -p build && cd build && cmake ../
+      run: mkdir -p build && cd build && cmake ..
 
     # Build the project with make
     - name: Build project
       run: cd build && make
 
-    # Run tests if available (make check)
-    - name: Run tests
-      run: cd build && make check
+    # Run tests using ctest (if CTest is configured in CMake)
+    - name: Run tests using ctest
+      run: cd build && ctest --output-on-failure
 
     # Optionally, run distcheck or other checks (if defined in Makefile)
     - name: Run distcheck (if applicable)
