@@ -25,9 +25,9 @@ jobs:
     - name: Build project
       run: cd build && make
 
-    # Run tests if available (make check)
-    - name: Run tests
-      run: cd build && make check
+    # Run tests using ctest (if CTest is configured in CMake)
+    - name: Run tests using ctest
+      run: cd build && ctest
 
     # Optionally, run distcheck or other checks (if defined in Makefile)
     - name: Run distcheck (if applicable)
