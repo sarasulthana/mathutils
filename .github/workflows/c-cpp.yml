@@ -13,26 +13,25 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Install dependencies for building and running autoconf (if needed)
+    # Install dependencies for building (CMake and build-essential)
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y autoconf automake build-essential
+      run: sudo apt-get update && sudo apt-get install -y cmake build-essential
 
-    # Ensure configure script is executable
-    - name: Ensure configure script is executable
-      run: chmod +x ./configure
+    # Create a build directory and run CMake
+    - name: Create build directory
+      run: mkdir build && cd build
 
-    # Run configure (if your project has the configure script)
-    - name: configure
-      run: ./configure
+    - name: Run CMake
+      run: cmake ..
 
-    # Build the project
-    - name: make
+    # Build the project with make
+    - name: Build project
       run: make
 
-    # Run tests (check target)
-    - name: make check
+    # Run tests if available (for example, if using make check)
+    - name: Run tests
       run: make check
 
-    # Run distcheck (ensure clean build)
-    - name: make distcheck
+    # Optionally, run distcheck or other clean build checks if needed
+    - name: Run distcheck (if applicable)
       run: make distcheck
